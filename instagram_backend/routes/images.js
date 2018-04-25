@@ -6,17 +6,19 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const Images = require('../models/index').images;
 
-// REVEAL ONE IMAGE
-router.get('/', (req, res) => {
-  images.findById(req.params.id)
+
+// REVEAL IMAGE PAGE 
+router.get('/images', (req, res) => {
+  Images.findById(req.params.id)
     .then(function(images) {
       res.send(images);
+      res.send("IMAGES ROUTE WORKS")
     });
 });
 
 // UPDATE IMAGE OR ADD COMMENT/TAG
 router.put('/:id', (req, res) => {
-  images.findById(req.params.id)
+  Images.findById(req.params.id)
     .then(function(images){
       images.update(getBodyParams(req))
       .then(function(updateImages){
@@ -27,7 +29,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE AN IMAGE
 router.delete('/:id', (req, res) => {
-  images.findById(req.params.id)
+  Images.findById(req.params.id)
     .then(function(images){
       image.destroy();
       console.log("IMAGE DESTORYED");
@@ -36,7 +38,7 @@ router.delete('/:id', (req, res) => {
 
 // INDEX SHOW ALL IMAGES
 router.get('/', (req, res) => {
-  images.findAll()
+  Images.findAll()
     .then(function(images){
       res.send(images);
     });

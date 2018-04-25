@@ -1,13 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-module.exports = function(passport) {
-/* Signup for new acc */
-router.post('/signup', passport.authenticate('local-signup'), function(req, res, next) {
-  res.json({username: req.username});
-  res.json({password: req.password});
-  res.json({email: req.email});
-});
+const Users = require('../models/index').users;
 
 /* login */
 router.post('/login', passport.authenticate('local-login'), function(req, res, next) {
@@ -15,19 +8,23 @@ router.post('/login', passport.authenticate('local-login'), function(req, res, n
   res.json({password: req.password});
 });
 
-/* CONFIGURES FRONT END ROUTING */
-router.get('/', (req, res) => {
-  // function(req, res, next) {
-  res.send("USERS ROUTE WORKS")
-});
+/* REVEALS - CONFIGURES FRONT END ROUTING */
+router.get('/users', (req, res) => {
+  Users.findById(req.params.id)
+    .then(function(users){
+      res.send(users);
+      res.send("USERS ROUTE WORKS")
+    });
+  });
+  
+// CRUDE
+    
+    module.exports = function(passport) {
+    /* Signup for new acc */
+    router.post('/signup', passport.authenticate('local-signup'), function(req, res, next) {
+      res.json({username: req.username});
+      res.json({password: req.password});
+      res.json({email: req.email});
+    });
 
-  // res.send('respond with a resource');
-  //  res.json([{
-  //    id: 1,
-  //    name: "Hiccup",
-  //    password: 'hiccup'
-  //  },
-
-
-return router;
 };
