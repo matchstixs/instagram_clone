@@ -7,7 +7,12 @@ class frontImages extends Component {
         // images: 
     };
 
-
+componentDidMount() {
+    fetch('/images')
+        .then(res => {
+            alert("THIS IS IMAGES COMPONENT")
+        })
+}
 
 render() {
     return(

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import frontImages from './instagram_clone/frontImages';
-import frontUsers from './instagram_clone/frontUsers';
 
+import FrontImages from './instagram_clone/FrontImages';
+import FrontUsers from './instagram_clone/FrontUsers';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -12,12 +13,12 @@ class App extends Component {
         </header>
         <p className="App-intro">
             "FIRST PAGE-NO COMPONENT THIS IS APP.JS"
-            <frontUsers />
-            <frontImages />
+            <FrontUsers />
+            <FrontImages />
         </p>
       </div>
     );
   }
 }
 
-export default App;
+export default App

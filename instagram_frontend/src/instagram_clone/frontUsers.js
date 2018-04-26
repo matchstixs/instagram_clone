@@ -7,7 +7,12 @@ class frontUsers extends Component {
         // USERS
     };
 
-
+componenetDidMount() {
+    fetch('/users')
+        .then(res => {
+            alert("THIS IS USERS COMPONENT")
+        })
+}
 
 render() {
     return(
