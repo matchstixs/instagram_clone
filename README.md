@@ -29,5 +29,3 @@
 In the project directory, you can run:
 
 ### `npm start`
-
-React cannot render an empty div, will result in failed to compile
