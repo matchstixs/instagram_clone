@@ -10,10 +10,7 @@
             - [X] created model for login
             - [X] created login form
             - [X] signup function
-        [] Create data to database
-
-
-
+        [X] Create data to cloud 
 
 # Cloud based techstack (NFRN)
 - NoSql db
@@ -21,6 +18,8 @@
 - React frontend
 - NodeJS
 
+# Future updates
+- imageupload css
 
 ## This project was bootstrapped with [Create React App]
 ### (https://github.com/facebook/create-react-app).
@@ -31,3 +30,4 @@ In the project directory, you can run:
 
 ### `npm start`
 
+React cannot render an empty div, will result in failed to compile

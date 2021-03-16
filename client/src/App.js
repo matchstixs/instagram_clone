@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import React, { useState, useEffect } from 'react'
 import Post from './components/Post.js';
+import ImageUpload from './components/ImageUpload.js'
 import './App.css';
 import { db, auth } from './firebase';
 import Modal from '@material-ui/core/Modal';
@@ -31,8 +32,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-
 function App() {
   // MATERIAL-UI HOOK
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -61,13 +60,12 @@ function App() {
   }, []);
   // code reruns whenever [object] changes
 
-
   // signUp useEffect()
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        console.log(user);
+        // console.log(user);
         setUser(user);
       } else {
         // user logged out
@@ -110,12 +108,13 @@ function App() {
 
   return (
     <div className="App">
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
       >
       <div style={modalStyle} className={classes.paper}>
-        <form className="app_signup">
+        <form className="app_signUp">
       <Input
       type="text" 
       placeholder="Username"
@@ -175,10 +174,9 @@ function App() {
         <img className="app_header_image"
           src={"/../image/header.png"}
           alt="logo" 
-          />
+        />
         </center>
       </div>
-
 
       {user ? (
       <Button onClick={() => auth.signOut()}>Logout</Button>
@@ -189,7 +187,9 @@ function App() {
         </div>
       )}
 
-      <h5>Image based social media on ReactJS</h5>
+      <h5>Upload images</h5>
+      <ImageUpload />
+
 
       {
         posts.map(post => (
